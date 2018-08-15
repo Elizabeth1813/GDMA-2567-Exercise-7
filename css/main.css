@@ -26,7 +26,13 @@
 	5.3 - Text Sizes
 	5.4 - Alignments
 --------------------------------------------------------------*/
-
+*, *:after, *:before{
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
 
 /*--------------------------------------------------------------
 1.0 - TYPOGRAPHY
@@ -36,7 +42,6 @@ html {
 }
 body {
 	font-family: 'Open Sans', sans-serif;
-	color: white;
 }
 /*--------------------------------------------------------------
 1.1 - BODY
@@ -47,43 +52,41 @@ body {
 }
 
 .lead span {
-	color:#77cae6;
 	font-weight: 800;
 }
-
+.txt-uppercase, form a {
+	text-transform: uppercase;
+}
+.txt-center, h1 {
+	text-align: center;
+}
+.col-2-5 {
+	text-align: left;
+}
 /*--------------------------------------------------------------
 1.2 - HEADINGS
 -------------------------------------------------------------- */
 h1 {
     font-size: 5.5rem;
-    background-color: rgba(255,255,255,.5);
     line-height: 5rem;
-    text-align: center;
-    padding: 20px;
 }
 
 h2 {
 	font-size: 3rem;
+	
+}
+h2, dt{
 	font-weight: 100;
 }
-
 h3 {
 	font-weight: 300;
 	font-size: 2rem;
-}
-h4 {
-	margin-bottom: 0;
 }
 
 /*--------------------------------------------------------------
 1.4 - FORMS
 -------------------------------------------------------------- */
-form {
-	padding-left:20px;
-}
-form div {
-	padding: 10px;
-}
+
 form .col-1 {
 	padding-right: 2rem !important;
 }
@@ -91,57 +94,25 @@ label {
 	display:none;
 }
 input, textarea {
-	background-color: #19896e;
 	width: 100%;
-	padding: 10px;
 	border:1px solid #19896e;
 }
 input:focus, textarea:focus {
 	outline:none;
 	border:1px solid #115e4b;
 }
-::-webkit-input-placeholder {
-   color: white;
-}
 
-:-moz-placeholder { /* Firefox 18- */
-   color: white;  
-}
 
-::-moz-placeholder {  /* Firefox 19+ */
-   color: white;  
-}
-
-:-ms-input-placeholder {  
-   color: white;  
-}
-form a {
-	margin-top: 20px;
-	padding:10px 20px;
-	background-color: #146c57;
-	text-transform: uppercase;
-	color: white;
-	text-decoration: none;
-	display:inline-block;
-	font-weight: 600;
-}
-
-form a:hover {
-	color: #146c57;
-	background-color: white;
-	
-}
 /*--------------------------------------------------------------
 1.5 - LISTS
 -------------------------------------------------------------- */
-dt, dd {
+dt, dd, form a, nav li  {
 	display: inline-block
 }
 dt {
-	font-weight:100;
 	width: 20px;
 }
-dd {
+dd, form a {
 	font-weight: 600;
 }
 /*--------------------------------------------------------------
@@ -153,38 +124,26 @@ nav {
 }
 
 nav li  {
-	display:inline-block;
 	list-style: none;
-	padding: 0 20px;
     font-weight: 700;
 }
 
-nav a {
-	color: white;
+
+nav a, form a{
 	text-decoration: none;
-	padding:10px;
 }
-
-nav a:hover {
-	background-color: rgba(255,255,255,.5);
-}
-
 
 
 /*--------------------------------------------------------------
 3.0 - SITE STRUCTURE
 -------------------------------------------------------------- */
-*, *:after, *:before {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border;
-	box-sizing: border-box;
-}
 
 .wrapper {
 	width: 80%; /*original width was 1170px*/
-	margin: 0 auto;
 }
-
+.wrapper,.center-block{
+	margin: 0 auto;
+} 
 .row:after {
 	content: " ";
 	display: table;
@@ -202,16 +161,10 @@ figure {
     -webkit-margin-end: 0;
 	margin-right: 20px;
 }
-
-[class*="col-"] {
+[class*="col-"], [class*="col-"]:last-of-type{
 	float: left;
-	padding: 0 2rem 2rem 0;
 }
 
-[class*="col-"]:last-of-type {
-	float: left;
-	padding-right: 0;
-}
 
 /*--------------------------------------------------------------
 3.1 - SINGLE COLUMNS
@@ -226,12 +179,10 @@ figure {
 
 .col-1-3 {
 	width: 33.33%;
-	padding: 1rem 0;
 }
 
 .col-1-4 {
 	width: 25%;
-	padding-bottom: 0;
 }
 
 .col-1-5 {
@@ -278,7 +229,6 @@ figure {
 }
 
 .col-2-5 {
-	text-align: left;
 	width: 40%;
 }
 
@@ -341,14 +291,6 @@ figure {
 .col-9-12 {
 	width: 91.67%;
 }
-/*--------------------------------------------------------------
-3.3 - SECTIONS
--------------------------------------------------------------- */
-/*-- Services -- */
-#services section div {
-	background-color: #1c7897;
-	padding:20px 10px;
-}
 
 /*--------------------------------------------------------------
 4.0 - MEDIA
@@ -364,7 +306,6 @@ figure {
 
 #map {
 	height: 200px;
-	margin-top:100px;
 }
 
 /*--------------------------------------------------------------
@@ -380,14 +321,33 @@ figure {
 #contact {
 	background-color:#21b490;
 }
-/*--------------------------------------------------------------
-5.2 - TXT UTILITY
--------------------------------------------------------------- */
-.txt-uppercase {
-	text-transform:uppercase;
+form a{
+	background-color: #146c57;
 }
-.txt-center {
-	text-align: center;
+nav a:hover, h1 {
+	background-color: rgba(255,255,255,.5);
+}
+form a:hover{
+	background-color: #fff;
+}
+input, textarea{
+	background-color: #19896e;
+}
+#services section div {
+	background-color: #1c7897;
+}
+/*--------------------------------------------------------------
+5.2 - TXT color
+-------------------------------------------------------------- */
+
+body, :-ms-input-placeholder, ::-moz-placeholder, :-moz-placeholder, ::-webkit-input-placeholder,form a, nav a {
+	color: #fff;
+}
+.lead span{
+	color: #77cae6;
+}
+form a:hover {
+	color: #146c57;
 }
 /*--------------------------------------------------------------
 5.3 - SPACING
@@ -413,12 +373,51 @@ figure {
 .m-b-lg {
 	margin-bottom: 50px;
 }
+nav a, form div, input, textarea {
+	padding:10px;
+}
+
+#services section div {
+	padding:20px 10px;
+}
+h1{
+	padding: 20px;
+}
+[class*="col-"] {
+	padding: 0 2rem 2rem 0;
+}
+
+[class*="col-"]:last-of-type {
+	padding-right: 0;
+}
+form a {
+	margin-top: 20px;
+	padding:10px 20px;
+}
+#map{
+	margin-top:100px;
+}
+nav li{
+	padding: 0 20px;
+}
+.col-1-4{
+	padding-bottom: 0;
+}
+.col-1-3{
+	padding: 1rem 0;
+}
+form {
+	padding-left:20px;
+}
+h4 {
+	margin-bottom: 0;
+}
+
 /*--------------------------------------------------------------
 5.4 - ALIGNMENTS
 -------------------------------------------------------------- */
 
 .center-block {
-	margin: 0 auto;
 	float: none !important;
 }
 
